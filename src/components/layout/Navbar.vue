@@ -16,6 +16,7 @@
             alt="geobump"
           >
         </router-link>
+        <span class="left version">v{{version}}</span>
         <ul class="right">
           <li>
             <router-link :to="{name: 'Join'}">Join</router-link>
@@ -30,10 +31,14 @@
 </template>
 
 <script>
+import geobumpAppData from '@/lib/app-data'
 export default {
   name: 'Navbar',
   data() {
-    return {}
+    const { version } = geobumpAppData
+    return {
+      version,
+    }
   },
 }
 </script>

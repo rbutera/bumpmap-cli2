@@ -126,11 +126,23 @@ export default {
     margin-right: auto;
   }
 
+  .field {
+    margin-bottom: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
   h2 {
     font-size: 3em;
     margin-bottom: 1em;
     margin-top: 0;
   }
+
+  .error-text {
+    font-size: 0.8em;
+    font-weight: 500;
+  }
+
   img.geobump-logo {
     height: 90px;
     position: relative;

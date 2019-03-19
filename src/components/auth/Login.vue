@@ -91,7 +91,16 @@ export default {
     margin-left: auto;
     margin-right: auto;
   }
+  .field {
+    margin-bottom: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
 
+  .error-text {
+    font-size: 0.8em;
+    font-weight: 500;
+  }
   h2 {
     font-size: 3em;
     margin-bottom: 1em;
