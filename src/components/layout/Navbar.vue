@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <nav class="grey darken-4">
+    <nav class="gray darken-4 geobump-navbar">
       <div class="container">
         <a href="/" class="brand-logo left">
           <img
@@ -37,6 +37,10 @@ export default {
   .brand-logo-image {
     position: relative;
     top: 10px;
+  }
+
+  .gray.darken-4.geobump-navbar {
+    background-color: rgba(50, 50, 50, 0.8);
   }
 }
 </style>
