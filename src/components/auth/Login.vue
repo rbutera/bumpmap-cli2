@@ -2,9 +2,7 @@
   <div class="auth-form">
     <div class="container">
       <form @submit.prevent="login" class="card-panel">
-        <div class="center">
-          <img class="center bumpmap-logo" src="/static/logo/bumpmap.svg" alt="bumpmap">
-        </div>
+        <AuthLogo/>
         <h2 class="center">Login</h2>
         <p class="center grey-text-darken-2">Welcome back!</p>
         <div class="field">
@@ -30,8 +28,10 @@
 
 
 <script>
+import AuthLogo from '@/components/auth/AuthLogo'
 export default {
   name: 'Login',
+  components: { AuthLogo },
   data() {
     return {
       foo: 'bar',

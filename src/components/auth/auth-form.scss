@@ -32,9 +32,10 @@
   }
 
   h2 {
-    font-size: 3em;
+    font-size: 1.5em;
+    font-weight: 400;
     margin-bottom: 1em;
-    margin-top: 0;
+    margin-top: 1em;
   }
 
   .error-text {
@@ -42,10 +43,5 @@
     font-weight: 500;
     margin: 0;
     opacity: 0.9;
-  }
-
-  img.bumpmap-logo {
-    height: 90px;
-    margin: 0 auto;
   }
 }

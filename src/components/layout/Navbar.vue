@@ -48,13 +48,16 @@ export default {
 <style lang="scss">
 .navbar {
   .brand-logo-emblem {
-    height: 30px;
+    height: 42px;
+    position: relative;
+    top: 8px;
   }
 
   .brand-logo-image {
     height: 40px;
     position: relative;
-    top: 7px;
+    top: 8.5px;
+    left: -5px;
   }
 
   .brand-logo-image,

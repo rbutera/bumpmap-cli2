@@ -2,7 +2,7 @@
   <div class="auth-form">
     <div class="container">
       <form @submit.prevent="signup" class="card-panel" @keyup="validateForm">
-        <img class="center bumpmap-logo" src="/static/logo/bumpmap.svg" alt="bumpmap">
+        <AuthLogo/>
         <h2 class="center">Join</h2>
         <div class="field">
           <label for="email">Email:</label>
@@ -56,9 +56,13 @@ import debounce from 'lodash/debounce'
 import { toSlug } from '@/utils/alias'
 import db from '@/firebase/init'
 import { EMAIL, ALIAS, PASSWORD } from '@/utils/regex-patterns'
+import AuthLogo from '@/components/auth/AuthLogo'
 
 export default {
   name: 'join',
+  components: {
+    AuthLogo,
+  },
   data() {
     return {
       foo: 'bar',
