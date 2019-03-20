@@ -1,5 +1,5 @@
 <template>
-  <div class="join">
+  <div class="auth-form">
     <div class="container">
       <form @submit.prevent="signup" class="card-panel" @keyup="validateForm">
         <h2 class="center">
@@ -27,7 +27,10 @@
           <p class="error-text red-text" v-if="errors.alias">{{errors.alias}}</p>
         </div>
         <div class="field center">
-          <button class="btn grey darken-3" @click.prevent="signup">Join</button>
+          <button
+            class="btn-large waves-effect waves-light green darken-3"
+            @click.prevent="signup"
+          >Join</button>
         </div>
       </form>
     </div>
@@ -87,7 +90,7 @@ export default {
 
       if (!alias) {
         this.errors.alias =
-          'Please choose an alias/username. You can choose to post anonymously or with your chosen username.'
+          'Please choose an alias/username. You will be able to post anonymously and with your chosen username.'
         result = false
       } else {
         this.errors.alias = null
@@ -109,46 +112,5 @@ export default {
 
 
 <style lang="scss">
-.join {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  padding-top: 100px;
-  background-color: rgba(0, 0, 0, 0.9);
-
-  .card-panel {
-    max-width: 500px;
-    margin-top: 60px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .field {
-    margin-bottom: 1em;
-    padding-left: 1em;
-    padding-right: 1em;
-  }
-
-  h2 {
-    font-size: 3em;
-    margin-bottom: 1em;
-    margin-top: 0;
-  }
-
-  .error-text {
-    font-size: 0.8em;
-    font-weight: 500;
-  }
-
-  img.geobump-logo {
-    height: 90px;
-    position: relative;
-    margin: 0;
-    left: -5 / px;
-    top: 29px;
-  }
-}
+@import './auth-form.scss';
 </style>
