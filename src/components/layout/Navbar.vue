@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import geobumpAppData from '@/lib/app-data'
+import geobumpAppData from '@/utils/app-data'
 export default {
   name: 'Navbar',
   data() {
