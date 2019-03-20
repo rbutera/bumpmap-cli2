@@ -1,11 +1,15 @@
 <template>
   <div class="navbar">
-    <nav class="gray darken-4 geobump-navbar">
+    <nav class="gray darken-4 bumpmap-navbar">
       <div class="container">
         <div class="brand-logo left">
           <router-link :to="{name: 'Map'}">
-            <img class="brand-logo-emblem" src="/static/logo/emblem-light.svg" alt="geobump logo">
-            <img class="brand-logo-image" src="/static/logo/geobump-light.svg" alt="geobump">
+            <img
+              class="brand-logo-emblem"
+              src="/static/logo/emblem-dark@0.5x.png"
+              alt="bumpmap logo"
+            >
+            <img class="brand-logo-image" src="/static/logo/bumpmap-light.svg" alt="bumpmap">
           </router-link>
           <span class="version">
             <span class="version-label">v</span>
@@ -28,11 +32,11 @@
 </template>
 
 <script>
-import geobumpAppData from '@/utils/app-data'
+import bumpmapAppData from '@/utils/app-data'
 export default {
   name: 'Navbar',
   data() {
-    const { version, release } = geobumpAppData
+    const { version, release } = bumpmapAppData
     return {
       version,
       release,
@@ -59,7 +63,7 @@ export default {
     padding: 0;
   }
 
-  .gray.darken-4.geobump-navbar {
+  .gray.darken-4.bumpmap-navbar {
     background-color: rgba(20, 20, 20, 0.8);
   }
 

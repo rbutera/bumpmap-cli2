@@ -2,10 +2,10 @@
   <div class="auth-form">
     <div class="container">
       <form @submit.prevent="login" class="card-panel">
-        <h2 class="center">
-          Login to
-          <img class="geobump-logo" src="/static/logo/geobump.svg" alt="geobump">
-        </h2>
+        <div class="center">
+          <img class="center bumpmap-logo" src="/static/logo/bumpmap.svg" alt="bumpmap">
+        </div>
+        <h2 class="center">Login</h2>
         <p class="center grey-text-darken-2">Welcome back!</p>
         <div class="field">
           <label for="email">Email:</label>

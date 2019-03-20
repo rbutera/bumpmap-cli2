@@ -2,10 +2,8 @@
   <div class="auth-form">
     <div class="container">
       <form @submit.prevent="signup" class="card-panel" @keyup="validateForm">
-        <h2 class="center">
-          Join
-          <img class="geobump-logo" src="/static/logo/geobump.svg" alt="geobump">
-        </h2>
+        <img class="center bumpmap-logo" src="/static/logo/bumpmap.svg" alt="bumpmap">
+        <h2 class="center">Join</h2>
         <div class="field">
           <label for="email">Email:</label>
           <input

@@ -1,16 +1,16 @@
-![GeoBump](./static/logo/logo-square.png)
+![bumpmap](./static/logo/logo-square.png)
 
-# geobump
+# bumpmap
 
-[LIVE](https://geobump.firebaseapp.com)
+[LIVE](https://bumpmap.org)
 
 > Location-based notice boards and chat app.
 
-geobump is an open-source web application built using Vue.js.
+**bumpmap** is an open-source web application built using Vue.js.
 
 It serves as an example of using Vue and Firebase together with the Browser's GeoLocation APIs.
 
-To try geobump, [try the app online here.](https://geobump.firebaseapp.com)
+To try **bumpmap**, [try the app online here.](https://bumpmap.org)
 
 # Technology Stack
 
