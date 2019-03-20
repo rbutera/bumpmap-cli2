@@ -25,6 +25,9 @@
           <li>
             <router-link :to="{name: 'Login'}">Login</router-link>
           </li>
+          <li>
+            <a @click="logout">Logout</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -32,6 +35,7 @@
 </template>
 
 <script>
+import firebase from 'firebase'
 import bumpmapAppData from '@/utils/app-data'
 
 export default {
@@ -42,6 +46,12 @@ export default {
       version,
       release,
     }
+  },
+  methods: {
+    async logout() {
+      const result = await firebase.auth().signOut()
+      this.$router.push({ name: 'Login' })
+    },
   },
 }
 </script>

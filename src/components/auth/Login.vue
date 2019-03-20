@@ -31,6 +31,7 @@
             class="btn-large waves-effect waves-light green darken-3"
             @click.prevent="login"
           >Let's Go</button>
+          <p class="error-text red-text" v-if="errors.login">{{errors.login}}</p>
         </div>
       </form>
     </div>
@@ -58,6 +59,7 @@ export default {
       errors: {
         email: null,
         password: null,
+        login: null,
       },
     }
   },
@@ -69,7 +71,7 @@ export default {
         this.errors.email = 'Please enter your email.'
         result = false
       }
-      if (!password || !password.match(PASSWORD)) {
+      if (!password) {
         this.errors.password = 'Please enter your password.'
         result = false
       }
@@ -83,7 +85,20 @@ export default {
 
       if (valid) {
         console.debug('Logging in.', this.formData)
-        console.log(firebase.auth(), email, password)
+        try {
+          const cred = await firebase
+            .auth()
+            .signInWithEmailAndPassword(email, password)
+          const { user } = cred
+          console.debug(`logged in as user ${user.uid}`)
+          this.$router.push({ name: 'Map' })
+        } catch (error) {
+          alert('could not login!')
+          console.error(error)
+          this.errors.email = null
+          this.errors.password = null
+          this.errors.login = error.message
+        }
       } else {
         console.error('Cannot log in', this.errors)
       }
