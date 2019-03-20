@@ -3,16 +3,27 @@
     <div class="container">
       <form @submit.prevent="login" class="card-panel">
         <AuthLogo/>
-        <h2 class="center">Login</h2>
-        <p class="center grey-text-darken-2">Welcome back!</p>
+        <h2 class="grey-text center">Login</h2>
+        <p class="center grey-text text-lighten-2">Welcome back!</p>
         <div class="field">
-          <label for="email">Email:</label>
-          <input type="email" name="email" v-model="formData.email">
+          <label class="grey-text" for="email">Email:</label>
+          <input
+            class="grey-text text-lighten-4"
+            type="email"
+            name="email"
+            v-model="formData.email"
+          >
           <p class="error-text red-text" v-if="errors.email">{{errors.email}}</p>
         </div>
         <div class="field">
-          <label for="password">Password:</label>
-          <input type="password" name="password" v-model="formData.password" autocomplete="off">
+          <label class="grey-text" for="password">Password:</label>
+          <input
+            class="grey-text text-lighten-4"
+            type="password"
+            name="password"
+            v-model="formData.password"
+            autocomplete="off"
+          >
           <p class="error-text red-text" v-if="errors.password">{{errors.password}}</p>
         </div>
         <div class="field center">

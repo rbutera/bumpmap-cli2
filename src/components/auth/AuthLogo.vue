@@ -1,7 +1,7 @@
 <template>
   <div class="auth-logo center">
     <img class="center bumpmap-emblem" src="/static/logo/emblem-dark.png" alt="bumpmap logo">
-    <img class="center bumpmap-logo" src="/static/logo/bumpmap.svg" alt="bumpmap.org">
+    <img class="center bumpmap-logo" src="/static/logo/bumpmap-light.svg" alt="bumpmap.org">
   </div>
 </template>
 

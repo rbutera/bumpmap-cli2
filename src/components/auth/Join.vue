@@ -1,23 +1,25 @@
 <template>
-  <div class="auth-form">
+  <div class="auth-form white-text">
     <div class="container">
       <form @submit.prevent="signup" class="card-panel" @keyup="validateForm">
         <AuthLogo/>
         <h2 class="center">Join</h2>
         <div class="field">
-          <label for="email">Email:</label>
+          <label class="grey-text" for="email">Email:</label>
           <input
+            class="grey-text text-lighten-4"
             type="email"
             name="email"
             @change="generateAlias(formData.email)"
             @keyup="generateAlias(formData.email)"
             v-model="formData.email"
           >
-          <p class="error-text red-text" v-if="errors.email">{{errors.email}}</p>
+          <p class="error-text red-text text-lighten-1" v-if="errors.email">{{errors.email}}</p>
         </div>
         <div class="field">
-          <label for="alias">Alias:</label>
+          <label class="grey-text" for="alias">Alias:</label>
           <input
+            class="grey-text text-lighten-4"
             type="text"
             name="alias"
             @focus="dirty.alias = true"
@@ -26,17 +28,29 @@
             v-model="formData.alias"
             autocomplete="off"
           >
-          <p class="error-text red-text" v-if="errors.alias">{{errors.alias}}</p>
+          <p class="error-text red-text text-lighten-1" v-if="errors.alias">{{errors.alias}}</p>
         </div>
         <div class="field">
-          <label for="password">Password:</label>
-          <input type="password" name="password" v-model="formData.password" autocomplete="off">
-          <p class="error-text red-text" v-if="errors.password">{{errors.password}}</p>
+          <label class="grey-text" for="password">Password:</label>
+          <input
+            class="grey-text text-lighten-4"
+            type="password"
+            name="password"
+            v-model="formData.password"
+            autocomplete="off"
+          >
+          <p class="error-text red-text text-lighten-1" v-if="errors.password">{{errors.password}}</p>
         </div>
         <div class="field">
-          <label for="password">Confirm Password:</label>
-          <input type="password" name="confirm" v-model="formData.confirm" autocomplete="off">
-          <p class="error-text red-text" v-if="errors.confirm">{{errors.confirm}}</p>
+          <label class="grey-text" for="password">Confirm Password:</label>
+          <input
+            class="grey-text text-lighten-4"
+            type="password"
+            name="confirm"
+            v-model="formData.confirm"
+            autocomplete="off"
+          >
+          <p class="error-text red-text text-lighten-1" v-if="errors.confirm">{{errors.confirm}}</p>
         </div>
         <div class="field center">
           <button
