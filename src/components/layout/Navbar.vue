@@ -33,6 +33,7 @@
 
 <script>
 import bumpmapAppData from '@/utils/app-data'
+
 export default {
   name: 'Navbar',
   data() {

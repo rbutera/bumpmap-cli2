@@ -3,7 +3,7 @@
     <div class="container">
       <form @submit.prevent="login" class="card-panel">
         <AuthLogo/>
-        <h2 class="grey-text center">Login</h2>
+        <h2 class="grey-text text-lighten-3 center">Login</h2>
         <p class="center grey-text text-lighten-2">Welcome back!</p>
         <div class="field">
           <label class="grey-text" for="email">Email:</label>
@@ -39,8 +39,11 @@
 
 
 <script>
-import AuthLogo from '@/components/auth/AuthLogo'
+import debounce from 'lodash/debounce'
+// import db from '@/firebase/init'
 import firebase from 'firebase'
+import { EMAIL, PASSWORD } from '@/utils/regex-patterns'
+import AuthLogo from '@/components/auth/AuthLogo'
 
 export default {
   name: 'Login',
@@ -62,29 +65,29 @@ export default {
     validateForm() {
       let result = true
       const { email, password } = this.formData
-      if (!email) {
+      if (!email || !email.match(EMAIL)) {
         this.errors.email = 'Please enter your email.'
         result = false
       }
-      if (!password) {
+      if (!password || !password.match(PASSWORD)) {
         this.errors.password = 'Please enter your password.'
         result = false
       }
 
       return result
     },
-    login() {
+    login: debounce(async function $login() {
       const { email, password } = this.formData
 
       const valid = this.validateForm()
 
       if (valid) {
         console.debug('Logging in.', this.formData)
-        alert('Logging in')
+        console.log(firebase.auth(), email, password)
       } else {
         console.error('Cannot log in', this.errors)
       }
-    },
+    }, 500),
   },
 }
 </script>

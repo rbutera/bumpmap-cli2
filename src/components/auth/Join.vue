@@ -65,7 +65,7 @@
 
 
 <script>
-import { split, contains, startsWith, endsWith } from 'rambda'
+import { contains, startsWith, endsWith } from 'rambda'
 import debounce from 'lodash/debounce'
 import { toSlug } from '@/utils/alias'
 import db from '@/firebase/init'
@@ -117,7 +117,7 @@ export default {
       }
       return result
     },
-    validateForm: debounce(async function() {
+    validateForm: debounce(async function $validate() {
       let result = true
       console.log(this)
       const { email, password, confirm, alias } = this.formData

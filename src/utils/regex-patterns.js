@@ -1,7 +1,7 @@
-export const SLUG_NOT_ALLOWED = /[$*_+~.()'"!\-:@']/g
+export const SLUG_NOT_ALLOWED = /[$*_+~()'"!\-:@']/g
 export const EMAIL = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-/* 
+/*
   ALIAS regex
   allowed:
     - alphanumerics
@@ -13,7 +13,7 @@ export const EMAIL = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+
 */
 export const ALIAS = /^[A-Za-z0-9. ]+(?:[_][A-Za-z0-9.]+)*$/
 
-/* 
+/*
   PASSWORD regex
   8 characters min-length and 3 of the following 4 rules:
   1. uppercase letters
