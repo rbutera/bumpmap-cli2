@@ -19,11 +19,15 @@
         </div>
 
         <ul class="right">
-          <li>
+          <li class="user-email" v-if="user">{{user.email}}</li>
+          <li v-if="!user">
             <router-link :to="{name: 'Join'}">Join</router-link>
           </li>
-          <li>
+          <li v-if="!user">
             <router-link :to="{name: 'Login'}">Login</router-link>
+          </li>
+          <li v-if="user">
+            <a @click="logout">Logout</a>
           </li>
         </ul>
       </div>
@@ -32,7 +36,9 @@
 </template>
 
 <script>
+import firebase from 'firebase'
 import bumpmapAppData from '@/utils/app-data'
+
 export default {
   name: 'Navbar',
   data() {
@@ -40,17 +46,40 @@ export default {
     return {
       version,
       release,
+      user: null,
     }
+  },
+  methods: {
+    async logout() {
+      const result = await firebase.auth().signOut()
+      this.$router.push({ name: 'Login' })
+    },
+  },
+  created() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.user = user
+      } else {
+        this.user = null
+      }
+    })
   },
 }
 </script>
 
 <style lang="scss">
 .navbar {
+  img {
+  }
+
   .brand-logo-emblem {
     height: 42px;
     position: relative;
     top: 8px;
+    @media screen and (max-width: 768px) {
+      height: 30px;
+      top: 3px;
+    }
   }
 
   .brand-logo-image {
@@ -58,6 +87,10 @@ export default {
     position: relative;
     top: 8.5px;
     left: -5px;
+    @media screen and (max-width: 768px) {
+      height: 24px;
+      top: 0px;
+    }
   }
 
   .brand-logo-image,
@@ -73,6 +106,11 @@ export default {
   .brand-logo {
     user-select: none;
     .version {
+      @media screen and (max-width: 768px) {
+        display: none;
+        top: 6px;
+        transform: scale(0.6);
+      }
       cursor: help;
       display: inline-block;
       margin: 0;
@@ -102,6 +140,23 @@ export default {
       font-size: 0.75em;
       font-weight: 500;
       letter-spacing: 0px;
+    }
+  }
+
+  .user-email {
+    position: relative;
+    top: 2px;
+    user-select: none;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    font-weight: 100;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-right: 20px;
+    @media screen and (max-width: 768px) {
+      display: none;
+      top: 6px;
+      transform: scale(0.6);
     }
   }
 }
