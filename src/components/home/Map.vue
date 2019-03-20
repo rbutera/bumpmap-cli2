@@ -23,6 +23,7 @@
 <script>
 import { GMapMap } from 'vue2-google-maps'
 import styles from './mapstyles'
+import { getGeoLocation } from '@/utils/geolocation'
 
 export default {
   name: 'GMap',
@@ -43,6 +44,17 @@ export default {
         mapTypeControl: false,
       },
     }
+  },
+  mounted() {
+    getGeoLocation().then(
+      ({ lat, lng }) => {
+        this.lat = lat || this.lat
+        this.lng = lng || this.lng
+      },
+      error => {
+        console.error('geolocation get error', error)
+      },
+    )
   },
 }
 </script>
