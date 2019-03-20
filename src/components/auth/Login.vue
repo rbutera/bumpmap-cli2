@@ -29,6 +29,7 @@
 
 <script>
 import AuthLogo from '@/components/auth/AuthLogo'
+
 export default {
   name: 'Login',
   components: { AuthLogo },
@@ -46,7 +47,7 @@ export default {
     }
   },
   methods: {
-    validateForm(event) {
+    validateForm() {
       let result = true
       const { email, password } = this.formData
       if (!email) {

@@ -1,16 +1,14 @@
-![bumpmap](./static/logo/logo-square.png)
-
-# bumpmap
-
-[LIVE](https://bumpmap.org)
+![bumpmap.org](./static/logo/logo-square@0.5x.png)
 
 > Location-based notice boards and chat app.
+
+[LIVE at bumpmap.org](https://bumpmap.org)
 
 **bumpmap** is an open-source web application built using Vue.js.
 
 It serves as an example of using Vue and Firebase together with the Browser's GeoLocation APIs.
 
-To try **bumpmap**, [try the app online here.](https://bumpmap.org)
+To try **bumpmap**, [visit **bumpmap.org**.](https://bumpmap.org)
 
 # Technology Stack
 
