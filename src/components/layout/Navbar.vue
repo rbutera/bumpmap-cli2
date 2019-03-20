@@ -47,10 +47,17 @@ export default {
 
 <style lang="scss">
 .navbar {
+  img {
+  }
+
   .brand-logo-emblem {
     height: 42px;
     position: relative;
     top: 8px;
+    @media screen and (max-width: 768px) {
+      height: 30px;
+      top: 3px;
+    }
   }
 
   .brand-logo-image {
@@ -58,6 +65,10 @@ export default {
     position: relative;
     top: 8.5px;
     left: -5px;
+    @media screen and (max-width: 768px) {
+      height: 24px;
+      top: 0px;
+    }
   }
 
   .brand-logo-image,
@@ -73,6 +84,11 @@ export default {
   .brand-logo {
     user-select: none;
     .version {
+      @media screen and (max-width: 768px) {
+        display: none;
+        top: 6px;
+        transform: scale(0.6);
+      }
       cursor: help;
       display: inline-block;
       margin: 0;

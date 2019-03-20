@@ -69,6 +69,7 @@ import { split, contains, startsWith, endsWith } from 'rambda'
 import debounce from 'lodash/debounce'
 import { toSlug } from '@/utils/alias'
 import db from '@/firebase/init'
+import firebase from 'firebase'
 import { EMAIL, ALIAS, PASSWORD } from '@/utils/regex-patterns'
 import AuthLogo from '@/components/auth/AuthLogo'
 
@@ -199,7 +200,32 @@ export default {
     }, 500),
     async signup() {
       const valid = await this.validateForm()
-      if (valid) {
+      const { email, alias, password } = this.formData
+
+      if (valid && !!email && !!alias && !!password) {
+        const slug = toSlug(alias)
+        const ref = db.collection('users').doc(slug)
+        try {
+          const cred = await firebase
+            .auth()
+            .createUserWithEmailAndPassword(email, password)
+          console.debug('cred', cred)
+          console.table(cred)
+          const { user } = cred
+          console.debug('user', user)
+          const newUserData = {
+            alias,
+            home: null,
+            user_id: user.uid,
+          }
+
+          console.debug('newUserData:', newUserData)
+
+          ref.set(newUserData)
+        } catch (e) {
+          alert('Signup Error')
+          console.error(e)
+        }
       } else {
         console.error('Cannot signup:', this.errors)
       }

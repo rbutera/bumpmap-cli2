@@ -16,6 +16,10 @@ export default {
 
 <style lang="scss">
 .auth-logo {
+  display: block;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
   img {
     margin: 0 auto;
   }

@@ -40,6 +40,7 @@
 
 <script>
 import AuthLogo from '@/components/auth/AuthLogo'
+import firebase from 'firebase'
 
 export default {
   name: 'Login',
