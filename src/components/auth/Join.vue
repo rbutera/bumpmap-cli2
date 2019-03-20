@@ -221,7 +221,9 @@ export default {
 
           console.debug('newUserData:', newUserData)
 
-          ref.set(newUserData)
+          const done = await ref.set(newUserData)
+          console.debug('done', done)
+          this.$router.push({ name: 'Map' })
         } catch (e) {
           alert('Signup Error')
           console.error(e)
