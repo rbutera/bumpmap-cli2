@@ -19,13 +19,14 @@
         </div>
 
         <ul class="right">
-          <li>
+          <li class="user-email" v-if="user">{{user.email}}</li>
+          <li v-if="!user">
             <router-link :to="{name: 'Join'}">Join</router-link>
           </li>
-          <li>
+          <li v-if="!user">
             <router-link :to="{name: 'Login'}">Login</router-link>
           </li>
-          <li>
+          <li v-if="user">
             <a @click="logout">Logout</a>
           </li>
         </ul>
@@ -45,6 +46,7 @@ export default {
     return {
       version,
       release,
+      user: null,
     }
   },
   methods: {
@@ -52,6 +54,15 @@ export default {
       const result = await firebase.auth().signOut()
       this.$router.push({ name: 'Login' })
     },
+  },
+  created() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.user = user
+      } else {
+        this.user = null
+      }
+    })
   },
 }
 </script>
@@ -129,6 +140,23 @@ export default {
       font-size: 0.75em;
       font-weight: 500;
       letter-spacing: 0px;
+    }
+  }
+
+  .user-email {
+    position: relative;
+    top: 2px;
+    user-select: none;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    font-weight: 100;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-right: 20px;
+    @media screen and (max-width: 768px) {
+      display: none;
+      top: 6px;
+      transform: scale(0.6);
     }
   }
 }
