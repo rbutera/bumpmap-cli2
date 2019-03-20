@@ -1,6 +1,6 @@
 {
   "name": "geobump",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Location-based notice boards and chat",
   "author": "rai@rbutera.com",
   "private": true,
