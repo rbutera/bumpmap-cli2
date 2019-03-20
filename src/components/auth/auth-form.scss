@@ -7,7 +7,12 @@
   z-index: -1;
   padding-top: 100px;
   background-color: rgba(0, 0, 0, 0.9);
+  padding-bottom: 40px;
+  overflow: auto;
 
+  @media screen and (max-height: 800px) {
+    padding-top: 30px;
+  }
   .card-panel {
     max-width: 500px;
     margin-top: 60px;
