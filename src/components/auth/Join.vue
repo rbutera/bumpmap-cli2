@@ -65,10 +65,11 @@
 
 
 <script>
-import { split, contains, startsWith, endsWith } from 'rambda'
+import { contains, startsWith, endsWith } from 'rambda'
 import debounce from 'lodash/debounce'
 import { toSlug } from '@/utils/alias'
 import db from '@/firebase/init'
+import firebase from 'firebase'
 import { EMAIL, ALIAS, PASSWORD } from '@/utils/regex-patterns'
 import AuthLogo from '@/components/auth/AuthLogo'
 
@@ -116,7 +117,7 @@ export default {
       }
       return result
     },
-    validateForm: debounce(async function() {
+    validateForm: debounce(async function $validate() {
       let result = true
       console.log(this)
       const { email, password, confirm, alias } = this.formData
@@ -199,7 +200,34 @@ export default {
     }, 500),
     async signup() {
       const valid = await this.validateForm()
-      if (valid) {
+      const { email, alias, password } = this.formData
+
+      if (valid && !!email && !!alias && !!password) {
+        const slug = toSlug(alias)
+        const ref = db.collection('users').doc(slug)
+        try {
+          const cred = await firebase
+            .auth()
+            .createUserWithEmailAndPassword(email, password)
+          console.debug('cred', cred)
+          console.table(cred)
+          const { user } = cred
+          console.debug('user', user)
+          const newUserData = {
+            alias,
+            home: null,
+            user_id: user.uid,
+          }
+
+          console.debug('newUserData:', newUserData)
+
+          const done = await ref.set(newUserData)
+          console.debug('done', done)
+          this.$router.push({ name: 'Map' })
+        } catch (e) {
+          alert('Signup Error')
+          console.error(e)
+        }
       } else {
         console.error('Cannot signup:', this.errors)
       }
