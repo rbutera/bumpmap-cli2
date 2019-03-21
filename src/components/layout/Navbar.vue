@@ -4,12 +4,10 @@
       <div class="container">
         <div class="brand-logo left">
           <router-link :to="{name: 'Map'}">
-            <img
-              class="brand-logo-emblem"
-              src="/static/logo/emblem-dark@0.5x.png"
-              alt="bumpmap logo"
-            >
-            <img class="brand-logo-image" src="/static/logo/bumpmap-light.svg" alt="bumpmap">
+            <div class="brand-logo-wrapper">
+              <img class="emblem" src="/static/logo/emblem-dark@0.5x.png" alt="bumpmap logo">
+              <img class="logotext" src="/static/logo/bumpmap-light.svg" alt="bumpmap">
+            </div>
           </router-link>
           <span class="version">
             <span class="version-label">v</span>
@@ -69,7 +67,25 @@ export default {
 
 <style lang="scss">
 .navbar {
-  .brand-logo-emblem {
+  .brand-logo-wrapper {
+    display: inline-block;
+    transition: all 0.2s ease-in-out;
+    .emblem,
+    .logotext {
+      transform-origin: center center;
+    }
+    &:hover {
+      .emblem {
+        transform: scale(1.05);
+        transform: translateX(-5px);
+      }
+      .logotext {
+        transform: scale(1.06);
+        // left: -1px;
+      }
+    }
+  }
+  .emblem {
     height: 42px;
     position: relative;
     top: 8px;
@@ -79,7 +95,7 @@ export default {
     }
   }
 
-  .brand-logo-image {
+  .logotext {
     height: 40px;
     position: relative;
     top: 8.5px;
@@ -90,8 +106,9 @@ export default {
     }
   }
 
-  .brand-logo-image,
-  .brand-logo-emblem {
+  .logotext,
+  .emblem {
+    transition: all 0.5s ease-in-out;
     margin: 0;
     padding: 0;
   }
@@ -110,7 +127,7 @@ export default {
       }
       cursor: help;
       display: inline-block;
-      margin: 0;
+      margin: 2px 5px;
       padding: 0;
       font-size: 0.5em;
       font-weight: 150;
