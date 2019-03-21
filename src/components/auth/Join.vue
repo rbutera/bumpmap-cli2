@@ -68,7 +68,7 @@
 import { contains, startsWith, endsWith } from 'rambda'
 import debounce from 'lodash/debounce'
 import { toSlug } from '@/utils/alias'
-import db from '@/firebase/init'
+import { db } from '@/firebase/init'
 import firebase from 'firebase'
 import { EMAIL, ALIAS, PASSWORD } from '@/utils/regex-patterns'
 import AuthLogo from '@/components/auth/AuthLogo'

@@ -1,4 +1,6 @@
 import firebase from 'firebase'
+import 'firebase/firestore'
+import { user, authState, idToken } from 'rxfire/auth'
 
 // Initialize Firebase
 const config = {
@@ -12,6 +14,21 @@ const config = {
 
 export const firebaseApp = firebase.initializeApp(config)
 
-const db = firebaseApp.firestore()
+export const db = firebaseApp.firestore()
 
-export default db
+export const auth = firebaseApp.auth()
+
+export const $user = user(auth)
+
+export const $authState = authState(auth)
+
+export const $idToken = idToken(auth)
+
+export default {
+  firebaseApp,
+  db,
+  auth,
+  $user,
+  $authState,
+  $idToken,
+}
