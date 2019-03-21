@@ -26,6 +26,7 @@ import { GMapMap } from 'vue2-google-maps'
 import { interval } from 'rxjs'
 import styles from './mapstyles'
 import { getGeoLocation } from '@/utils/geolocation'
+import { dispatch } from '@/state/store'
 
 export default {
   name: 'GMap',
@@ -62,6 +63,10 @@ export default {
     this.$subscribeTo(interval(60000), () => {
       this.sessionLength += 1
       this.printSessionLength()
+    })
+
+    this.$subscribeTo(interval(10000), () => {
+      dispatch({ type: 'BUMPMAP_TEST', sessionLength: this.sessionLength })
     })
 
     getGeoLocation().then(
