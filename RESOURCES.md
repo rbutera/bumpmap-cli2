@@ -1,0 +1,2 @@
+- [rxfire](https://github.com/firebase/firebase-js-sdk/tree/master/packages/rxfire)
+- [vue-rx](https://github.com/vuejs/vue-rx)
