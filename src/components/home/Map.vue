@@ -23,6 +23,7 @@
 
 <script>
 import { GMapMap } from 'vue2-google-maps'
+import { interval } from 'rxjs'
 import styles from './mapstyles'
 import { getGeoLocation } from '@/utils/geolocation'
 
@@ -44,6 +45,7 @@ export default {
         fullscreenControl: false,
         mapTypeControl: false,
       },
+      sessionLength: 0,
     }
   },
   methods: {
@@ -52,14 +54,22 @@ export default {
       const { lat, lng } = latLng
       console.log(`map clicked @ (${lat()}, ${lng()})`)
     },
+    printSessionLength() {
+      console.debug(`map session length: ${this.sessionLength} minute`)
+    },
   },
   mounted() {
+    this.$subscribeTo(interval(60000), () => {
+      this.sessionLength += 1
+      this.printSessionLength()
+    })
+
     getGeoLocation().then(
       ({ lat, lng }) => {
         this.lat = lat || this.lat
         this.lng = lng || this.lng
       },
-      error => {
+      (error) => {
         console.error('geolocation get error', error)
       },
     )
