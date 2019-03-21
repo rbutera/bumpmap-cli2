@@ -4,12 +4,10 @@
       <div class="container">
         <div class="brand-logo left">
           <router-link :to="{name: 'Map'}">
-            <img
-              class="brand-logo-emblem"
-              src="/static/logo/emblem-dark@0.5x.png"
-              alt="bumpmap logo"
-            >
-            <img class="brand-logo-image" src="/static/logo/bumpmap-light.svg" alt="bumpmap">
+            <div class="brand-logo-wrapper">
+              <img class="emblem" src="/static/logo/emblem-dark@0.5x.png" alt="bumpmap logo">
+              <img class="logotext" src="/static/logo/bumpmap-light.svg" alt="bumpmap">
+            </div>
           </router-link>
           <span class="version">
             <span class="version-label">v</span>
@@ -69,10 +67,21 @@ export default {
 
 <style lang="scss">
 .navbar {
-  img {
+  .brand-logo-wrapper {
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      .emblem {
+        transition: all 0.2s ease-in-out;
+        transform: scale(1.1);
+      }
+      .logotext {
+        transition: all 0.2s ease-in-out;
+        transform: scale(1.1);
+        left: 0px;
+      }
+    }
   }
-
-  .brand-logo-emblem {
+  .emblem {
     height: 42px;
     position: relative;
     top: 8px;
@@ -82,7 +91,7 @@ export default {
     }
   }
 
-  .brand-logo-image {
+  .logotext {
     height: 40px;
     position: relative;
     top: 8.5px;
@@ -93,8 +102,8 @@ export default {
     }
   }
 
-  .brand-logo-image,
-  .brand-logo-emblem {
+  .logotext,
+  .emblem {
     margin: 0;
     padding: 0;
   }
