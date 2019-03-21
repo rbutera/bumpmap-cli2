@@ -1,6 +1,7 @@
 <template>
   <div class="map">
     <GmapMap
+      @click="clickMap"
       :center="{lat: this.lat, lng: this.lng}"
       :zoom="zoom"
       map-type-id="roadmap"
@@ -44,6 +45,13 @@ export default {
         mapTypeControl: false,
       },
     }
+  },
+  methods: {
+    clickMap(event) {
+      const { latLng } = event
+      const { lat, lng } = latLng
+      console.log(`map clicked @ (${lat()}, ${lng()})`)
+    },
   },
   mounted() {
     getGeoLocation().then(
