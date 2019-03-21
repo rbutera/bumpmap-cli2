@@ -68,6 +68,7 @@ export default {
 <style lang="scss">
 .navbar {
   .brand-logo-wrapper {
+    display: inline-block;
     transition: all 0.2s ease-in-out;
     &:hover {
       .emblem {
@@ -77,7 +78,7 @@ export default {
       .logotext {
         transition: all 0.2s ease-in-out;
         transform: scale(1.1);
-        left: 0px;
+        left: 4px;
       }
     }
   }
@@ -122,7 +123,7 @@ export default {
       }
       cursor: help;
       display: inline-block;
-      margin: 0;
+      margin: 0 10px;
       padding: 0;
       font-size: 0.5em;
       font-weight: 150;
