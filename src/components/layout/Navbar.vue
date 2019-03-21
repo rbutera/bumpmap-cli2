@@ -70,15 +70,18 @@ export default {
   .brand-logo-wrapper {
     display: inline-block;
     transition: all 0.2s ease-in-out;
+    .emblem,
+    .logotext {
+      transform-origin: center center;
+    }
     &:hover {
       .emblem {
-        transition: all 0.2s ease-in-out;
-        transform: scale(1.1);
+        transform: scale(1.05);
+        transform: translateX(-5px);
       }
       .logotext {
-        transition: all 0.2s ease-in-out;
-        transform: scale(1.1);
-        left: 4px;
+        transform: scale(1.06);
+        // left: -1px;
       }
     }
   }
@@ -105,6 +108,7 @@ export default {
 
   .logotext,
   .emblem {
+    transition: all 0.5s ease-in-out;
     margin: 0;
     padding: 0;
   }
@@ -123,7 +127,7 @@ export default {
       }
       cursor: help;
       display: inline-block;
-      margin: 0 10px;
+      margin: 2px 5px;
       padding: 0;
       font-size: 0.5em;
       font-weight: 150;
